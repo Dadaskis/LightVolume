@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://demo/player/player.gd" type="Script" id=1]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.506
+
+[node name="player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="x_rot" type="Spatial" parent="."]
+
+[node name="y_rot" type="Spatial" parent="x_rot"]
+
+[node name="camera" type="Camera" parent="x_rot/y_rot"]
+fov = 90.0
+
+[node name="collision" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="layer" type="CanvasLayer" parent="."]
+
+[node name="text" type="Label" parent="layer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 19.0
+margin_right = -13.0
+margin_bottom = -19.0
+text = "Light Volume 3D Demo Controller
+
+Controls:
+[W][A][S][D] :: Moving
+[Spacebar] :: Moving Up
+[Left Control] :: Moving Down
+[Shift] :: Move Faster"
+valign = 2
