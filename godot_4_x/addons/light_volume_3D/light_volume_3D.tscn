@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://csma1mons5ji1"]
+
+[ext_resource type="Script" path="res://addons/light_volume_3D/src/light_volume_3D.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lfgh"]
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.6, 0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rcj1e"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="LightVolume3D" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_7lfgh")
+mesh = SubResource("BoxMesh_rcj1e")
+script = ExtResource("1")
+color = Color(0.156863, 0.235294, 0.235294, 1)
+metadata/_edit_group_ = true

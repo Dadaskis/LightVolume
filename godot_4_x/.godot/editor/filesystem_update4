@@ -1,0 +1,8 @@
+res://default_env.tres
+res://demo/demo.tscn
+res://demo/dev_texture/dev_grid_black.tres
+res://demo/blockout/blockout.gd
+res://demo/player/player.tscn
+res://demo/dev_texture/dev_grid_emit.tres
+res://demo/dev_texture/dev_grid.tres
+res://addons/light_volume_3D/assets/prefab/light_volume0.tscn

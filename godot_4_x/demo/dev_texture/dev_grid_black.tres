@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bnbmflrihw748"]
+
+[ext_resource type="Texture2D" uid="uid://bogwmbsrp5p30" path="res://demo/dev_texture/dev_grid_D.tga" id="1"]
+
+[resource]
+specular_mode = 2
+albedo_color = Color(0.196078, 0.196078, 0.196078, 1)
+albedo_texture = ExtResource("1")
+metallic_specular = 0.0
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.0
+uv1_world_triplanar = true

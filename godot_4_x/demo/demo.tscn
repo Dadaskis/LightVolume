@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=3 uid="uid://ben7fcvmy0qdr"]
+
+[ext_resource type="Script" path="res://demo/blockout/blockout.gd" id="1_jx6ix"]
+[ext_resource type="Material" uid="uid://bnbmflrihw748" path="res://demo/dev_texture/dev_grid_black.tres" id="2_hj8sv"]
+[ext_resource type="PackedScene" uid="uid://de3bfrunsa73v" path="res://demo/player/player.tscn" id="3_06inc"]
+[ext_resource type="Material" uid="uid://dtxnht0tub6gr" path="res://demo/dev_texture/dev_grid.tres" id="3_36b8i"]
+[ext_resource type="Material" uid="uid://dgrhll764qq2j" path="res://demo/dev_texture/dev_grid_emit.tres" id="4_kvsq1"]
+[ext_resource type="PackedScene" uid="uid://csma1mons5ji1" path="res://addons/light_volume_3D/light_volume_3D.tscn" id="6_qtxg1"]
+
+[sub_resource type="Environment" id="Environment_2dvkr"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(0.101961, 0.129412, 0.156863, 1)
+tonemap_mode = 3
+tonemap_exposure = 1.8
+tonemap_white = 1.3
+adjustment_enabled = true
+adjustment_brightness = 1.1
+adjustment_contrast = 1.22
+adjustment_saturation = 0.74
+
+[sub_resource type="BoxMesh" id="BoxMesh_gw00j"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0ru7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dla5"]
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.6, 0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_132sr"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07qso"]
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.6, 0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3yodo"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="demo" type="Node3D"]
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2dvkr")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.419681, 2.05697, -0.4684)
+visible = false
+light_energy = 0.0
+
+[node name="blockout" type="Node3D" parent="."]
+script = ExtResource("1_jx6ix")
+
+[node name="block_black" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(4.49936, 0, 0, 0, 0.248047, 0, 0, 0, 4.20607, 0, 0, 0)
+material_override = ExtResource("2_hj8sv")
+mesh = SubResource("BoxMesh_gw00j")
+skeleton = NodePath("../..")
+
+[node name="block_white" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(-7.48012e-08, 0.165393, 0, -1.71125, -7.22955e-09, 0, 0, 0, 3.38677, -1.90895, 0.919949, -0.111887)
+material_override = ExtResource("3_36b8i")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="block_white3" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(-5.68292e-16, -7.22955e-09, 3.06278, 2.87407e-15, 0.165393, 1.33878e-07, -0.346091, 1.77636e-15, -5.02917e-15, -0.629338, 1.66729, -0.111887)
+material_override = ExtResource("3_36b8i")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="block_emit" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(-1.85209e-16, -2.35614e-09, 0.302819, 9.36671e-16, 0.0539022, 1.32366e-08, -0.112793, 5.78922e-16, -4.97237e-16, -1.19802, 1.58312, -0.181284)
+material_override = ExtResource("4_kvsq1")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="block_emit2" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(-1.85209e-16, -2.35614e-09, 0.302819, 9.36671e-16, 0.0539022, 1.32366e-08, -0.112793, 5.78922e-16, -4.97237e-16, 0.405576, 1.58312, -0.181284)
+material_override = ExtResource("4_kvsq1")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="block_white4" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(2.87407e-15, 0.165393, 7.10543e-15, 5.68292e-16, 1.06156e-36, -2.24502, -0.346091, 1.77636e-15, -3.68639e-15, 0.962381, 0.626932, -0.111887)
+material_override = ExtResource("3_36b8i")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="block_white2" type="MeshInstance3D" parent="blockout"]
+transform = Transform3D(9.34925e-15, -7.22955e-09, -2.80453, -1.71125, -7.22955e-09, 0, -7.48012e-08, 0.165393, -1.2259e-07, -0.539597, 0.919948, -1.70947)
+material_override = ExtResource("3_36b8i")
+mesh = SubResource("BoxMesh_l0ru7")
+skeleton = NodePath("../..")
+
+[node name="light_blue_spot" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.09134, 1.45389, -0.179514)
+light_color = Color(0.411765, 0.556863, 0.72549, 1)
+light_energy = 5.957
+spot_range = 9.023
+spot_angle = 72.0
+spot_angle_attenuation = 2.37841
+
+[node name="light_blue" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09134, 1.45389, -0.179514)
+light_color = Color(0.411765, 0.556863, 0.72549, 1)
+light_energy = 0.133
+omni_range = 2.962
+
+[node name="light_orange_spot" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.432024, 1.45389, -0.179514)
+light_color = Color(0.717647, 0.486275, 0.27451, 1)
+light_energy = 5.957
+spot_range = 9.023
+spot_angle = 72.0
+spot_angle_attenuation = 2.37841
+
+[node name="light_orange" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432024, 1.45389, -0.179514)
+light_color = Color(0.717647, 0.486275, 0.27451, 1)
+light_energy = 0.133
+omni_range = 2.962
+
+[node name="player" parent="." instance=ExtResource("3_06inc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880904, 1.28444, 2.48878)
+
+[node name="light_volume" parent="." instance=ExtResource("6_qtxg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19341, 1.54332, -0.184002)
+material_override = SubResource("StandardMaterial3D_8dla5")
+mesh = SubResource("BoxMesh_132sr")
+light_scale = 0.33
+light_alpha = 0.55
+volume_scale_x = 0.745
+volume_scale_y = 1.005
+color = Color(0.2, 0.317647, 0.431373, 1)
+
+[node name="light_volume2" parent="." instance=ExtResource("6_qtxg1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412229, 1.54332, -0.184002)
+material_override = SubResource("StandardMaterial3D_07qso")
+mesh = SubResource("BoxMesh_3yodo")
+light_scale = 0.33
+light_alpha = 0.55
+volume_scale_x = 0.745
+volume_scale_y = 1.005
+color = Color(0.388235, 0.25098, 0.0627451, 1)

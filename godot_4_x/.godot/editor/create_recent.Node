@@ -1,0 +1,6 @@
+SpotLight3D
+OmniLight3D
+DirectionalLight3D
+Node3D
+MeshInstance3D
+WorldEnvironment

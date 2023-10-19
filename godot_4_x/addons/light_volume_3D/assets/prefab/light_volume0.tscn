@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnjkab7jugve0"]
+
+[ext_resource type="Texture2D" uid="uid://22ujxpbrq6k4" path="res://addons/light_volume_3D/assets/textures/volume0.tga" id="1"]
+[ext_resource type="Texture2D" uid="uid://d0cmvglnr1ksa" path="res://addons/light_volume_3D/assets/textures/glow0.tga" id="2"]
+
+[sub_resource type="QuadMesh" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qjko"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.360784, 0.556863, 0.603922, 1)
+albedo_texture = ExtResource("2")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 1.07
+distance_fade_mode = 1
+distance_fade_min_distance = 0.52
+distance_fade_max_distance = 1.96
+
+[sub_resource type="QuadMesh" id="4"]
+size = Vector2(3.737, 3.068)
+center_offset = Vector3(0, -1.419, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byika"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.360784, 0.556863, 0.603922, 1)
+albedo_texture = ExtResource("1")
+proximity_fade_enabled = true
+proximity_fade_distance = 1.36
+distance_fade_mode = 1
+distance_fade_min_distance = 0.52
+distance_fade_max_distance = 1.96
+
+[node name="light_volume0" type="Node3D"]
+
+[node name="glow0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.41778, 0, 0, 0, 1.41778, 0, 0, 0, 1.41778, 0, 0, 0)
+mesh = SubResource("1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1qjko")
+
+[node name="volume0" type="MeshInstance3D" parent="."]
+mesh = SubResource("4")
+surface_material_override/0 = SubResource("StandardMaterial3D_byika")

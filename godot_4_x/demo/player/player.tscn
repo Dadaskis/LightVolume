@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://de3bfrunsa73v"]
+
+[ext_resource type="Script" path="res://demo/player/player.gd" id="1"]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 0.506
+
+[node name="player" type="CharacterBody3D"]
+script = ExtResource("1")
+
+[node name="x_rot" type="Node3D" parent="."]
+
+[node name="y_rot" type="Node3D" parent="x_rot"]
+
+[node name="camera" type="Camera3D" parent="x_rot/y_rot"]
+fov = 90.0
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
+
+[node name="layer" type="CanvasLayer" parent="."]
+
+[node name="text" type="Label" parent="layer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 19.0
+offset_right = -13.0
+offset_bottom = -19.0
+text = "Light3D Volume 3D Demo Controller
+
+Controls:
+[W][A][S][D] :: Moving
+[Spacebar] :: Moving Up
+[Left Control] :: Moving Down
+[Shift] :: Move Faster"
+vertical_alignment = 2
