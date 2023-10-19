@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/glow0.tga-085ac4568fe4d567b478acdbe22dae4d.s3tc.stex"
-path.etc2="res://.import/glow0.tga-085ac4568fe4d567b478acdbe22dae4d.etc2.stex"
+path.s3tc="res://.import/glow0.tga-9fd0bc603139d26b0d842e4d43f83de1.s3tc.stex"
+path.etc2="res://.import/glow0.tga-9fd0bc603139d26b0d842e4d43f83de1.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/location_light_volume/assets/textures/glow0.tga"
-dest_files=[ "res://.import/glow0.tga-085ac4568fe4d567b478acdbe22dae4d.s3tc.stex", "res://.import/glow0.tga-085ac4568fe4d567b478acdbe22dae4d.etc2.stex" ]
+source_file="res://addons/light_volume_3D/assets/textures/glow0.tga"
+dest_files=[ "res://.import/glow0.tga-9fd0bc603139d26b0d842e4d43f83de1.s3tc.stex", "res://.import/glow0.tga-9fd0bc603139d26b0d842e4d43f83de1.etc2.stex" ]
 
 [params]
 

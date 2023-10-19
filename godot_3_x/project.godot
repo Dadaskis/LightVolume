@@ -12,16 +12,24 @@ _global_script_classes=[ {
 "base": "MeshInstance",
 "class": "LightVolume3D",
 "language": "GDScript",
-"path": "res://addons/location_light_volume/src/light_volume_3D.gd"
+"path": "res://addons/light_volume_3D/src/light_volume_3D.gd"
 } ]
 _global_script_class_icons={
-"LightVolume3D": "res://addons/location_light_volume/assets/icon/icon.png"
+"LightVolume3D": "res://addons/light_volume_3D/assets/icon/icon.png"
 }
 
 [application]
 
 config/name="Light Volume"
 config/icon="res://icon.png"
+
+[autoload]
+
+LightVolume3DCamera="*res://addons/light_volume_3D/src/light_volume_3D_camera.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/light_volume_3D/plugin.cfg" )
 
 [gui]
 

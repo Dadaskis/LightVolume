@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/volume0.tga-86c699e483901b771f355020fd435252.s3tc.stex"
-path.etc2="res://.import/volume0.tga-86c699e483901b771f355020fd435252.etc2.stex"
+path.s3tc="res://.import/volume0.tga-60ce69aa457e2b3fce00060c5bff19ce.s3tc.stex"
+path.etc2="res://.import/volume0.tga-60ce69aa457e2b3fce00060c5bff19ce.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/location_light_volume/assets/textures/volume0.tga"
-dest_files=[ "res://.import/volume0.tga-86c699e483901b771f355020fd435252.s3tc.stex", "res://.import/volume0.tga-86c699e483901b771f355020fd435252.etc2.stex" ]
+source_file="res://addons/light_volume_3D/assets/textures/volume0.tga"
+dest_files=[ "res://.import/volume0.tga-60ce69aa457e2b3fce00060c5bff19ce.s3tc.stex", "res://.import/volume0.tga-60ce69aa457e2b3fce00060c5bff19ce.etc2.stex" ]
 
 [params]
 

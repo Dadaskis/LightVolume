@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/light_volume_3D/src/light_volume_3D.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+params_blend_mode = 1
+albedo_color = Color( 0.6, 0.1, 0.1, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.2, 0.2, 0.2 )
+
+[node name="LightVolume3D" type="MeshInstance"]
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+color = Color( 0.156863, 0.235294, 0.235294, 1 )

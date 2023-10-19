@@ -7,12 +7,15 @@ const FAST_VELOCITY = 5.0
 
 onready var x_rot = $x_rot
 onready var y_rot = $x_rot/y_rot
+onready var camera = $x_rot/y_rot/camera
 
 var velocity: = Vector3.ZERO
 var mouse_cursor_moved: = Vector2.ZERO
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	LightVolume3DCamera.set_camera(camera)
 
 func process_movement(delta: float):
 	var velocity_target: = Vector3.ZERO

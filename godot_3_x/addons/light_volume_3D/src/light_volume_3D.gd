@@ -1,12 +1,12 @@
 tool 
 
 class_name LightVolume3D, \
-	"res://addons/location_light_volume/assets/icon/icon.png"
+	"res://addons/light_volume_3D/assets/icon/icon.png"
 
 extends MeshInstance
 
 const PREFAB_SCENE = preload(
-	"res://addons/location_light_volume/assets/prefab/light_volume0.tscn"
+	"res://addons/light_volume_3D/assets/prefab/light_volume0.tscn"
 )
 const FADE_ANGLE = 80.0
 const VOLUME_LOGIC_DISABLE_DISTANCE = 2500.0
@@ -19,15 +19,38 @@ export(float) var volume_scale_x = 1.6 setget set_volume_scale_x
 export(float) var volume_scale_y = 1.9 setget set_volume_scale_y
 export(Color) var color = Color.aqua setget set_color
 export(Color) var color_glow_add = Color.black setget set_color_glow_add
+export(bool) var disable_all_in_editor = false setget set_disable_all_in_editor
 #export()
 
 var initialized = false
 var prefab: Spatial
 var glow: MeshInstance
-var glow_mat: SpatialMaterial
+var glow_mat: ShaderMaterial
 var volume: MeshInstance
-var volume_mat: SpatialMaterial
+var volume_mat: ShaderMaterial
 var update_timer = 0.0
+
+var disable_all_in_editor_no_logic = false
+
+func on_enabled_in_editor():
+	disable_all_in_editor_no_logic = true
+	set_disable_all_in_editor(false)
+	disable_all_in_editor_no_logic = false
+
+func on_disabled_in_editor():
+	disable_all_in_editor_no_logic = true
+	set_disable_all_in_editor(true)
+	disable_all_in_editor_no_logic = false
+
+func set_disable_all_in_editor(value):
+	disable_all_in_editor = value
+	get_child(0).visible = not disable_all_in_editor
+	if disable_all_in_editor_no_logic:
+		return
+	if disable_all_in_editor:
+		LightVolume3DCamera.make_disabled_in_editor()
+	else:
+		LightVolume3DCamera.make_enabled_in_editor()
 
 func set_point_scale(value):
 	point_scale = value
@@ -58,11 +81,10 @@ func set_light_alpha(value):
 	if not is_instance_valid(prefab):
 		return
 	
-	var glow_color = glow_mat.albedo_alpha_color
-	
-	glow_mat.set_albedo_alpha_color(
-		Color(glow_color.r, glow_color.g, glow_color.b, light_alpha)
-	)
+	var glow_color = glow_mat.get_shader_param("albedo_alpha_color")
+	var light_alpha_color = Color(
+		glow_color.r, glow_color.g, glow_color.b, light_alpha)
+	glow_mat.set_shader_param("albedo_alpha_color", light_alpha_color)
 
 func set_color(value):
 	color = value
@@ -70,8 +92,8 @@ func set_color(value):
 	if not is_instance_valid(prefab):
 		return
 	
-	volume_mat.set_albedo_alpha_color(color)
-	glow_mat.set_albedo_alpha_color(color)
+	volume_mat.set_shader_param("albedo_alpha_color", color)
+	glow_mat.set_shader_param("albedo_alpha_color", color)
 	
 	set_light_alpha(light_alpha)
 
@@ -82,7 +104,8 @@ func set_color_glow_add(value):
 	if not is_instance_valid(prefab):
 		return
 	
-	glow_mat.set_albedo_alpha_color(color + color_glow_add)
+	glow_mat.set_shader_param(
+		"albedo_alpha_color", color + color_glow_add)
 	set_light_alpha(light_alpha)
 
 func set_reinitialize(value):
@@ -102,7 +125,6 @@ func create_prefab():
 		var prev_prefab = get_node_or_null("__PREFAB")
 		prev_prefab.name = "__REMOVE"
 		prev_prefab.queue_free()
-	name = "[Volume] " + str(get_index())
 	prefab = PREFAB_SCENE.instance()
 	prefab.name = "__PREFAB"
 	add_child(prefab)
@@ -142,19 +164,32 @@ func initialize():
 		material_override = mat
 	else:
 		mesh = null
+	set_physics_process(true)
+
+func on_camera_change():
+	set_physics_process(true)
 
 func _ready():
 	initialize()
+	LightVolume3DCamera.connect("camera_changed", self, "on_camera_change")
+	LightVolume3DCamera.connect(
+		"enabled_in_editor", self, "on_enabled_in_editor")
+	LightVolume3DCamera.connect(
+		"disabled_in_editor", self, "on_disabled_in_editor")
 
 func _physics_process(delta: float) -> void:
-	if Engine.editor_hint:
-		return
+	#if Engine.editor_hint:
+	#	return
+	
+	set_meta("_edit_group_", true)
+	get_child(0).set_meta("_edit_lock_", true)
 	
 	update_timer += delta
 	
-	#var camera = MainCamera.get_camera()
-	var camera
+	var camera = LightVolume3DCamera.camera
 	if not is_instance_valid(camera):
+		print_debug("[LightVolume3D] Invalid camera node! Disabling updating.")
+		set_physics_process(false)
 		return
 	if not is_instance_valid(volume):
 		return
@@ -184,6 +219,7 @@ func _physics_process(delta: float) -> void:
 	fade_angle = min(fade_angle, FADE_ANGLE)
 	fade_angle = max(fade_angle, 0.0)
 	var fade_blend = fade_angle / FADE_ANGLE
-	volume_mat.set_albedo_alpha_color(
+	volume_mat.set_shader_param(
+		"albedo_alpha_color",
 		lerp(Color(0.0, 0.0, 0.0, 0.0), color, fade_blend)
 	)

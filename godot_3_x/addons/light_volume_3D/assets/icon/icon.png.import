@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon.png-e94859e31c93fd862f7f5277a92a03a2.s3tc.stex"
-path.etc2="res://.import/icon.png-e94859e31c93fd862f7f5277a92a03a2.etc2.stex"
+path.s3tc="res://.import/icon.png-5bbe38301c8b5b2e57f81c3e6f31d69b.s3tc.stex"
+path.etc2="res://.import/icon.png-5bbe38301c8b5b2e57f81c3e6f31d69b.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/location_light_volume/assets/icon/icon.png"
-dest_files=[ "res://.import/icon.png-e94859e31c93fd862f7f5277a92a03a2.s3tc.stex", "res://.import/icon.png-e94859e31c93fd862f7f5277a92a03a2.etc2.stex" ]
+source_file="res://addons/light_volume_3D/assets/icon/icon.png"
+dest_files=[ "res://.import/icon.png-5bbe38301c8b5b2e57f81c3e6f31d69b.s3tc.stex", "res://.import/icon.png-5bbe38301c8b5b2e57f81c3e6f31d69b.etc2.stex" ]
 
 [params]
 
