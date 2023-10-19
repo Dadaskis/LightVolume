@@ -1,13 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://demo/player/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://demo/dev_texture/dev_grid.tres" type="Material" id=2]
 [ext_resource path="res://demo/dev_texture/dev_grid_black.tres" type="Material" id=3]
 [ext_resource path="res://demo/blockout/blockout.gd" type="Script" id=4]
+[ext_resource path="res://demo/dev_texture/dev_grid_emit.tres" type="Material" id=5]
+
+[sub_resource type="Environment" id=2]
+background_mode = 1
+ambient_light_color = Color( 0.0588235, 0.0666667, 0.0745098, 1 )
+tonemap_mode = 3
+tonemap_exposure = 2.11
+tonemap_white = 1.1
+glow_enabled = true
+glow_strength = 0.83
+glow_bloom = 0.11
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+glow_high_quality = true
+adjustment_enabled = true
+adjustment_brightness = 1.27
+adjustment_contrast = 1.07
 
 [sub_resource type="CubeMesh" id=1]
 
 [node name="demo" type="Spatial"]
+
+[node name="world_environment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.331451, 1.86494, 3.07834 )
@@ -32,3 +52,75 @@ transform = Transform( -1.39356e-07, 0, 0.174261, 0, 1.90087, 0, -3.1881, 0, -7.
 mesh = SubResource( 1 )
 skeleton = NodePath("../..")
 material/0 = ExtResource( 2 )
+
+[node name="dev_block_white4" type="MeshInstance" parent="blockout"]
+transform = Transform( -2.42291e-06, 0, 3.02978, 0, 0.229535, 0, -0.442723, 0, -1.05778e-09, 0.13743, 3.65287, -0.428845 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="dev_block_emit" type="MeshInstance" parent="blockout"]
+transform = Transform( -7.07841e-08, 0, 0.0885135, 0, 0.0453676, 0, -0.357496, 0, -8.54151e-10, 0.13743, 3.3975, -0.428845 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
+
+[node name="dev_block_emit2" type="MeshInstance" parent="blockout"]
+transform = Transform( -7.07841e-08, 0, 0.0885135, 0, 0.0453676, 0, -0.357496, 0, -8.54151e-10, -1.50075, 3.3975, -0.428845 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
+
+[node name="dev_block_emit3" type="MeshInstance" parent="blockout"]
+transform = Transform( -7.07841e-08, 0, 0.0885135, 0, 0.0453676, 0, -0.357496, 0, -8.54151e-10, 1.76882, 3.3975, -0.428845 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 5 )
+
+[node name="dev_block_white5" type="MeshInstance" parent="blockout"]
+transform = Transform( 1.05909e-13, 0.229535, -1.32436e-07, 1.48498e-06, -6.14934e-09, -1.85693, -0.442723, 0, -1.05778e-09, 3.27543, 2.01816, -0.428845 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 2 )
+
+[node name="blue_light" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.50426, 3.16547, -0.4401 )
+light_color = Color( 0.352941, 0.517647, 0.647059, 1 )
+light_energy = 0.261
+omni_range = 9.948
+omni_attenuation = 7.21
+
+[node name="blue_light_spot" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.48102, 3.34588, -0.4401 )
+light_color = Color( 0.427451, 0.580392, 0.772549, 1 )
+spot_range = 6.012
+spot_attenuation = 0.707107
+spot_angle = 62.3
+
+[node name="blue_light2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131328, 3.16547, -0.4401 )
+light_color = Color( 0.352941, 0.517647, 0.647059, 1 )
+light_energy = 0.261
+omni_range = 9.948
+omni_attenuation = 7.21
+
+[node name="blue_light_spot2" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.105844, 3.34588, -0.4401 )
+light_color = Color( 0.427451, 0.580392, 0.772549, 1 )
+spot_range = 6.012
+spot_attenuation = 0.707107
+spot_angle = 62.3
+
+[node name="orange_light" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82035, 3.16547, -0.4401 )
+light_color = Color( 0.670588, 0.447059, 0.160784, 1 )
+light_energy = 0.261
+omni_range = 9.948
+omni_attenuation = 7.21
+
+[node name="orange_light_spot" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.80938, 3.34588, -0.4401 )
+light_color = Color( 0.807843, 0.545098, 0.313726, 1 )
+spot_range = 6.012
+spot_attenuation = 0.707107
+spot_angle = 62.3
