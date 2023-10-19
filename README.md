@@ -28,5 +28,5 @@ You can either create a new node...
 # Known issues
 Sadly, i couldn't fix an issue with selection of these nodes. I did fix some issues regarding choosing of children, however, these nodes make it much harder to select other nodes in editor. Until i find a more plausible solution, i've added a special boolean variable for you to disable visibility of these nodes when you need to work on the scene.
 <p align="center">
-	<img src="github/temp_fix.jpg" width="600" alt="Image of my sadness over here...">
+	<img src="github/temp_fix.jpg" width="400" alt="Image of my sadness over here...">
 </p>
