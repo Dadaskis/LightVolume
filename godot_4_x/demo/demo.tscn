@@ -23,20 +23,20 @@ adjustment_saturation = 0.74
 
 [sub_resource type="BoxMesh" id="BoxMesh_l0ru7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dla5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tpqm"]
 blend_mode = 1
 shading_mode = 0
 albedo_color = Color(0.6, 0.1, 0.1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_132sr"]
+[sub_resource type="BoxMesh" id="BoxMesh_60maq"]
 size = Vector3(0.2, 0.2, 0.2)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07qso"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06dsl"]
 blend_mode = 1
 shading_mode = 0
 albedo_color = Color(0.6, 0.1, 0.1, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_3yodo"]
+[sub_resource type="BoxMesh" id="BoxMesh_s6qwc"]
 size = Vector3(0.2, 0.2, 0.2)
 
 [node name="demo" type="Node3D"]
@@ -127,20 +127,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880904, 1.28444, 2.48878)
 
 [node name="light_volume" parent="." instance=ExtResource("6_qtxg1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19341, 1.54332, -0.184002)
-material_override = SubResource("StandardMaterial3D_8dla5")
-mesh = SubResource("BoxMesh_132sr")
+material_override = SubResource("StandardMaterial3D_1tpqm")
+mesh = SubResource("BoxMesh_60maq")
+color = Color(0.2, 0.317647, 0.431373, 1)
 light_scale = 0.33
 light_alpha = 0.55
 volume_scale_x = 0.745
 volume_scale_y = 1.005
-color = Color(0.2, 0.317647, 0.431373, 1)
 
 [node name="light_volume2" parent="." instance=ExtResource("6_qtxg1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412229, 1.54332, -0.184002)
-material_override = SubResource("StandardMaterial3D_07qso")
-mesh = SubResource("BoxMesh_3yodo")
+material_override = SubResource("StandardMaterial3D_06dsl")
+mesh = SubResource("BoxMesh_s6qwc")
+color = Color(0.388235, 0.25098, 0.0627451, 1)
 light_scale = 0.33
 light_alpha = 0.55
 volume_scale_x = 0.745
 volume_scale_y = 1.005
-color = Color(0.388235, 0.25098, 0.0627451, 1)

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Light Volume"
+run/main_scene="res://demo/demo.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 

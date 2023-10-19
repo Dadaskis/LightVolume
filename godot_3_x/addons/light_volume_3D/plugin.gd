@@ -7,12 +7,12 @@ func _enter_tree() -> void:
 		"res://addons/light_volume_3D/src/light_volume_3D_camera.gd"
 	)
 	
-	self.add_custom_type(
-		"LightVolume3D", 
-		"MeshInstance", 
-		load("res://addons/light_volume_3D/src/light_volume_3D.gd"),
-		load("res://addons/light_volume_3D/assets/icon/icon.png")
-	)
+#	self.add_custom_type(
+#		"LightVolume3D", 
+#		"MeshInstance", 
+#		load("res://addons/light_volume_3D/src/light_volume_3D.gd"),
+#		load("res://addons/light_volume_3D/assets/icon/icon.png")
+#	)
 	
 	var result = ProjectSettings.save()
 	assert(result == OK, "Failed to save project settings")
